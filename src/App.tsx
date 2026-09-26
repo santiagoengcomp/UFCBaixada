@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { initializeStore } from './store';
 import Layout from './components/Layout';
 import Login from './pages/Login';
@@ -33,7 +33,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/login" element={
           isLoggedIn ? <Navigate to="/admin" replace /> : <Login />
@@ -121,7 +121,7 @@ function App() {
         
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
