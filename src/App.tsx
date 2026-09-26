@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { initializeStore } from './store';
 import Layout from './components/Layout';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Players from './pages/Players';
@@ -35,10 +36,15 @@ function App() {
   return (
     <HashRouter>
       <Routes>
+        {/* Rota pública - Home */}
+        <Route path="/" element={<Home />} />
+        
+        {/* Login */}
         <Route path="/login" element={
           isLoggedIn ? <Navigate to="/admin" replace /> : <Login />
         } />
         
+        {/* Área Administrativa */}
         <Route path="/admin" element={
           <ProtectedRoute>
             <Layout onLogout={handleLogout}>
@@ -119,7 +125,7 @@ function App() {
           </ProtectedRoute>
         } />
         
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>
   );

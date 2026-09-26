@@ -1,91 +1,46 @@
 # UFC Baixada - Sistema de Gestão de Time
 
-Webapp completo para gerenciar um time de futebol de fim de semana, com todas as funcionalidades solicitadas.
+Webapp completo para gerenciar um time de futebol de fim de semana, com página pública e área administrativa.
 
-## 🎯 Funcionalidades
+## 🎯 Estrutura do Site
 
-### Autenticação
-- **Login**: admin / admin123
-- Área administrativa protegida
+### 📱 Página Pública (Home)
+Acesse em: `/#/`
 
-### Dashboard
-- Estatísticas gerais (jogadores ativos, disponíveis, pagamentos)
-- Artilheiro da temporada
-- Líder de assistências
-- Últimos jogadores e pagamentos
+A página inicial é **pública** e mostra informações do time para todos os visitantes:
 
-### Gestão de Jogadores
-- CRUD completo de jogadores
-- Posição principal e secundária
-- Status ativo/inativo e disponível/indisponível
-- Busca e filtros
-- Valores mensais e por jogo
+- **Header** com logo, nome do time e temporada
+- **Estatísticas** gerais (jogadores, partidas, gols)
+- **Ranking de Artilharia** (top 5 goleadores)
+- **Ranking de Garçons** (top 5 assistências)
+- **Últimas Partidas** com times e status
+- **Elenco completo** organizado por posição
+- **Footer** com informações adicionais
 
-### Posições e Formações
-- CRUD de posições customizáveis
-- Formações pré-definidas (4-3-3, 4-4-2, 3-5-2, 4-2-3-1)
-- Cores por posição
+### 🔐 Área Administrativa
+Acesse em: `/#/login` (link discreto no canto superior direito)
 
-### Campo Virtual
-- Visualização dos jogadores em campo
-- Formação selecionável
-- Distribuição automática por posição
-- Jogadores sem posição destacados
-- Legenda de posições
+**Credenciais:** admin / admin123
 
-### Sorteio de Times
-- Seleção de jogadores disponíveis
-- Configuração de número de times
-- Nomes e cores customizáveis
-- Equilíbrio por posição
-- Distribuição de goleiros
-- Visualização em lista ou campo
-- Salvar como partida
+A área administrativa é protegida por login e permite:
 
-### Pagamentos
-- CRUD completo
-- Tipos: mensal, jogo, extra, outro
-- Status: pendente, pago, atrasado, isento
-- Métodos: Pix, dinheiro, cartão, outro
-- Filtros por jogador, status e mês
-- Dashboard com totais
-- Marcar como pago rapidamente
-
-### Artilharia
-- Registro de gols por partida
-- Ranking automático
-- Filtro por partida
-- Quantidade de gols e minuto opcional
-- Destaque para o artilheiro
-
-### Assistências
-- Registro de assistências
-- Ranking automático
-- Filtro por partida
-- Destaque para o líder
-
-### Partidas
-- CRUD completo
-- Vinculação com times sorteados
-- Status: agendada, finalizada, cancelada
-- Histórico de partidas
-
-### Configurações
-- Nome e apelido do time
-- Logo por URL
-- Cores personalizáveis (primária, secundária, destaque)
-- Textos de cabeçalho e rodapé
-- Formação padrão
-- Valor padrão de pagamento
-- Ativar/desativar módulos
-- Resetar sistema
+- **Dashboard** - Estatísticas completas e visão geral
+- **Jogadores** - CRUD completo de jogadores
+- **Posições** - Gerenciar posições e formações
+- **Campo Virtual** - Visualização dos jogadores em campo
+- **Sorteio** - Sortear times para partidas
+- **Pagamentos** - Gestão financeira completa
+- **Artilharia** - Registrar e gerenciar gols
+- **Assistências** - Registrar e gerenciar assistências
+- **Partidas** - Gerenciar histórico de jogos
+- **Configurações** - Personalizar todo o sistema
 
 ## 🛠️ Tecnologias
 
 - **React 18** + **TypeScript**
 - **Vite** (build tool)
 - **Tailwind CSS v4** (estilização)
-- **React Router v6** (roteamento com HashRouter)
+- **React Router v6** (HashRouter para SPA)
 - **Lucide React** (ícones)
 - **localStorage** (persistência de dados)
 
@@ -102,8 +57,6 @@ npm run dev
 npm run build
 ```
 
-Os arquivos serão gerados na pasta `dist/`.
-
 ### Preview do Build
 ```bash
 npm run preview
@@ -111,16 +64,22 @@ npm run preview
 
 ## 🎮 Como Usar
 
-1. **Acesse** a aplicação no navegador
-2. **Faça login** com: admin / admin123
-3. **Configure** o time em Configurações (nome, cores, logo)
-4. **Cadastre jogadores** na seção Jogadores
-5. **Defina posições** em Posições & Formações
-6. **Visualize o campo** em Campo Virtual
-7. **Sorteie times** na seção Sorteio
-8. **Registre pagamentos** na seção Pagamentos
-9. **Registre gols e assistências** nas respectivas seções
-10. **Gerencie partidas** na seção Partidas
+### Para Visitantes (Página Pública)
+1. Acesse o site: `https://seu-site.vercel.app`
+2. Veja informações do time, elenco, rankings e partidas
+3. Não é necessário login
+
+### Para Administradores
+1. Clique em "Admin" no canto superior direito da página inicial
+2. Faça login com: **admin / admin123**
+3. Configure o time em Configurações (nome, cores, logo)
+4. Cadastre jogadores na seção Jogadores
+5. Defina posições em Posições & Formações
+6. Visualize o campo em Campo Virtual
+7. Sorteie times na seção Sorteio
+8. Registre pagamentos na seção Pagamentos
+9. Registre gols e assistências nas respectivas seções
+10. Gerencie partidas na seção Partidas
 
 ## 📊 Dados de Exemplo
 
@@ -134,7 +93,7 @@ O sistema já vem com dados de exemplo:
 
 ## 🔄 Resetar Sistema
 
-Na página de Configurações, clique em "Resetar" para restaurar todos os dados ao padrão.
+Na página de Configurações (admin), clique em "Resetar" para restaurar todos os dados ao padrão.
 
 ## 📱 Responsividade
 
@@ -146,23 +105,74 @@ Todos os dados são salvos no localStorage do navegador. Os dados persistem entr
 
 ## 🎨 Personalização
 
-Todas as cores, textos e configurações podem ser personalizadas através da página de Configurações. As mudanças são aplicadas imediatamente em toda a interface.
+Todas as cores, textos e configurações podem ser personalizadas através da página de Configurações (admin). As mudanças são aplicadas imediatamente em toda a interface, incluindo a página pública.
+
+## 🚀 Deploy no Vercel
+
+### Opção 1: Deploy via GitHub (Recomendado)
+
+1. Crie um repositório no GitHub
+2. Acesse https://vercel.com e faça login
+3. Importe o repositório
+4. O Vercel detectará automaticamente as configurações
+5. Deploy!
+
+### Opção 2: Deploy via Vercel CLI
+
+```bash
+npm install -g vercel
+vercel login
+vercel --prod
+```
 
 ## 📝 Notas Técnicas
 
 - **HashRouter**: Utilizado para compatibilidade com ambientes de arquivo estático
+- **Página Pública**: Rota `/` mostra informações do time sem necessidade de login
+- **Área Admin**: Rotas `/admin/*` protegidas por autenticação
 - **localStorage**: Dados persistidos localmente no navegador
 - **Tailwind CSS v4**: Utiliza `@import "tailwindcss"` ao invés das diretivas tradicionais
-- **Caminhos relativos**: Configurados no vite.config.js para funcionar em qualquer subdiretório
 
-## 🚀 Próximos Passos (Opcional)
+## 🔒 Segurança
 
-- Implementar backend com Next.js + Prisma + SQLite
-- Autenticação mais segura com bcryptjs
-- Upload de imagens para logo
-- Exportar relatórios em PDF
-- Integração com WhatsApp para notificações
-- Gráficos mais avançados no dashboard
+- A página pública não expõe dados sensíveis (apenas informações do time)
+- A área administrativa é protegida por login
+- Dados de pagamento são visíveis apenas para administradores
+- Sessão armazenada em sessionStorage (expira ao fechar o navegador)
+
+## 📋 Estrutura de Rotas
+
+```
+/                    → Página pública (Home)
+/login              → Login administrativo
+/admin              → Dashboard (protegido)
+/admin/players      → Gestão de jogadores (protegido)
+/admin/positions    → Posições e formações (protegido)
+/admin/virtual-field → Campo virtual (protegido)
+/admin/draw         → Sorteio de times (protegido)
+/admin/payments     → Pagamentos (protegido)
+/admin/goals        → Artilharia (protegido)
+/admin/assists      → Assistências (protegido)
+/admin/matches      → Partidas (protegido)
+/admin/settings     → Configurações (protegido)
+```
+
+## ✅ Critérios de Aceite
+
+- ✅ Página pública acessível sem login
+- ✅ Informações do time visíveis para todos
+- ✅ Rankings de artilharia e assistências públicos
+- ✅ Elenco organizado por posição
+- ✅ Últimas partidas visíveis
+- ✅ Área administrativa protegida por login
+- ✅ CRUD completo de jogadores
+- ✅ Campo virtual funcional
+- ✅ Sorteio de times com equilíbrio
+- ✅ Gestão de pagamentos
+- ✅ Registro de gols e assistências
+- ✅ Personalização total via configurações
+- ✅ Responsivo e mobile-first
+- ✅ Pronto para deploy no Vercel
 
 ---
 
